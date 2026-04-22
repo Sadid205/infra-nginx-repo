@@ -45,4 +45,4 @@ jobs:
           username: sadid
           key: ${{ secrets.SSH_KEY }}
           script: |
-            sudo nginx -t && nginx -s reload
+            sudo nginx -t && sudo nginx -s reload
