@@ -21,7 +21,8 @@ jobs:
           username: sadid
           key: ${{ secrets.SSH_KEY }}
           script: |
-            mkdir -p /opt/infra/nginx
+            sudo mkdir -p /opt/infra/nginx
+            sudo chown -R sadid:sadid /opt/infra/nginx
 
       - name: Sync to VPS
         uses: appleboy/scp-action@v0.1.7
