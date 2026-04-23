@@ -22,17 +22,17 @@ jobs:
 
         with:
           host: ${{ secrets.VPS_HOST }}
-          username: sadid
+          username: ${{ secrets.HOST_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           script: |
             sudo mkdir -p /opt/infra/nginx
-            sudo chown -R sadid:sadid /opt/infra/nginx
+            sudo chown -R ${{ secrets.HOST_USERNAME }}:${{ secrets.HOST_USERNAME }} /opt/infra/nginx
 
       - name: Sync to VPS
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.VPS_HOST }}
-          username: sadid
+          username: ${{ secrets.HOST_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           source: "."
           target: "/opt/infra/nginx"
@@ -42,7 +42,7 @@ jobs:
 
         with:
           host: ${{ secrets.VPS_HOST }}
-          username: sadid
+          username: ${{ secrets.HOST_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           script: |
             sudo nginx -t && sudo nginx -s reload
